@@ -2,69 +2,102 @@
 
 ## Guía de Estudio: Estimación de Software en la Era de la Inteligencia Artificial
 
-Bienvenido a esta unidad. El objetivo de este material es comprender cómo los equipos de desarrollo calculan cuánto tiempo, esfuerzo y dinero costará construir un sistema informático, y cómo las herramientas de Inteligencia Artificial actuales están cambiando estas reglas de juego.
+El propósito de este material es que usted comprenda cómo los equipos de desarrollo calculan el tiempo, el esfuerzo y el costo requeridos para construir un sistema informático, y cómo la incorporación de herramientas de Inteligencia Artificial está transformando estas dinámicas de trabajo.
 
 ---
+
 ## Desarrollo Teórico
 
-### 1. ¿Por qué es tan difícil estimar en software?
-A diferencia de la construcción civil o la manufactura, el software es intangible y los requerimientos suelen cambiar sobre la marcha. Estimar significa predecir el futuro bajo condiciones de incertidumbre. Una mala estimación genera retrasos, sobrecostos o agotamiento (*burnout*) en el equipo de desarrollo.
+### 1. ¿Por qué resulta complejo estimar en software?
+A diferencia de industrias tradicionales como la construcción civil, el software posee una naturaleza intangible y sus requerimientos suelen evolucionar a lo largo del tiempo. Estimar implica predecir el comportamiento del proyecto bajo condiciones de incertidumbre. Una estimación imprecisa suele derivar en sobrecostos, retrasos en la entrega o desgaste del equipo de trabajo.
 
 ### 2. Las 3 Etapas Clave de la Estimación
-Para estimar un proyecto de forma profesional, debemos seguir un orden lógico:
-1. **Tamaño:** ¿Qué tan grande es el sistema? (Se mide tradicionalmente en Líneas de Código - KLOC, o modernamente en Puntos de Historia basados en la complejidad).
-2. **Esfuerzo:** ¿Cuántas **horas-hombre** o **meses-hombre** tomará escribir ese tamaño?
-3. **Duración y Costo:** Traducir el esfuerzo en tiempo de calendario real (ej. si se necesitan 100 horas y tengo 2 programadores, tomará menos semanas) y calcular el costo financiero.
+Para realizar una estimación profesional, es necesario seguir un orden lógico:
+1. **Tamaño:** Determinación de la dimensión del sistema. Se mide tradicionalmente en Líneas de Código (KLOC) o mediante métricas basadas en complejidad (Puntos de Función o Puntos de Historia).
+2. **Esfuerzo:** Cálculo de las **horas-persona** o **meses-persona** requeridas para construir la dimensión estimada.
+3. **Duración y Costo:** Traducción del esfuerzo en tiempo cronológico real (según la disponibilidad del equipo) y determinación del presupuesto financiero.
 
 ### 3. Estimación bajo Incertidumbre: Método PERT (3 Puntos)
-Como no somos adivinos, el método PERT propone calcular el **Esfuerzo Esperado ($E$)** utilizando tres escenarios posibles:
+Frente a la falta de certezas absolutas, el método PERT permite obtener un **Esfuerzo Esperado ($E$)** ponderando tres escenarios:
 
 $$E = \frac{O + 4M + P}{6}$$
 
-* **$O$ (Optimista):** El tiempo que tomaría si **todo sale perfecto** y sin ningún tipo de bloqueo técnico.
-* **$M$ (Más Probable):** El tiempo realista basado en proyectos anteriores similares y con interrupciones normales.
-* **$P$ (Pesimista):** El peor escenario posible (ej. problemas graves con librerías, bugs complejos o curvas de aprendizaje largas).
+* **$O$ (Optimista):** El tiempo necesario si el proceso se desarrolla **sin imprevistos ni bloqueos técnicos**.
+* **$M$ (Más Probable):** El tiempo realista basado en la experiencia previa del equipo y en condiciones normales de trabajo.
+* **$P$ (Pesimista):** El escenario desfavorable en el que surgen problemas técnicos significativos, dependencias complejas o curvas de aprendizaje no previstas.
 
-> ** Importante en la era moderna:** Al calcular estos valores, ya no solo debes contar el tiempo de tipeo de código. Debes incluir obligatoriamente el tiempo de **configuración del entorno, pruebas unitarias y *Code Review* (revisión de código)**.
+> **Consideración actual:** Al calcular estos valores, no solo debe contemplarse el tiempo de codificación pura. Se deben incluir explícitamente las etapas de **configuración de entorno, pruebas automatizadas y revisión de código (*Code Review*)**.
 
 ### 4. El Impacto de la Inteligencia Artificial Generativa
-Hoy en día, herramientas como *GitHub Copilot, Cursor, Claude o ChatGPT* aceleran notablemente la escritura de código repetitivo (*boilerplate*), lo que reduce el tiempo del escenario **Optimista ($O$)**. 
-Sin embargo, la IA también introduce un fenómeno nuevo: el código se escribe más rápido, pero **aumenta la carga en la revisión de código y pruebas de integración**, ya que se debe validar minuciosamente que la IA no haya introducido vulnerabilidades o lógica incorrecta.
+El uso de asistentes como *GitHub Copilot, Cursor, Claude o ChatGPT* acelera la generación de código repetitivo (*boilerplate code*), reduciendo significativamente el escenario **Optimista ($O$)**. 
+
+Sin embargo, esto traslada la carga de trabajo hacia otras etapas: si bien la codificación inicial se agiliza, **aumenta la necesidad de realizar revisiones de código exhaustivas y pruebas de integración**, con el objetivo de validar la calidad, la seguridad y la precisión de las soluciones generadas.
 
 ---
 
-## Trabajo Práctico Guiado: "Estimación Híbrida (Tradicional + IA)"
+## Ejemplo Resuelto: Comparativa de Estimación
+
+Para ilustrar el procedimiento, analicemos el caso de estimación para el desarrollo de un **Módulo de Autenticación de Usuarios (Login, Registro con JWT y validaciones en Base de Datos)**.
+
+### Caso A: Desarrollo Tradicional (Sin IA)
+Un desarrollador trabaja consultando documentación técnica convencional y escribiendo el código de manera manual.
+
+1. **Definición de Escenarios:**
+   * $O_{trad} = 10 \text{ horas}$ (La integración no presenta complicaciones).
+   * $M_{trad} = 16 \text{ horas}$ (Flujo de trabajo habitual con ajustes menores).
+   * $P_{trad} = 30 \text{ horas}$ (Aparecen inconvenientes de configuración en la base de datos o en la firma de tokens).
+
+2. **Cálculo del Esfuerzo Esperado con PERT:**
+   $$E_{trad} = \frac{10 + 4(16) + 30}{6} = \frac{10 + 64 + 30}{6} = \frac{104}{6} \approx 17.33 \text{ horas}$$
+
+---
+
+### Caso B: Desarrollo Asistido por Inteligencia Artificial
+El desarrollador utiliza herramientas de IA para autocompletar código y generar estructuras base de las funciones.
+
+1. **Definición de Escenarios:**
+   * $O_{ia} = 5 \text{ horas}$ (La IA genera la estructura base y los tests casi de forma inmediata).
+   * $M_{ia} = 11 \text{ horas}$ (Se agiliza la codificación, pero se invierte tiempo en auditar la lógica y corregir errores del asistente).
+   * $P_{ia} = 22 \text{ horas}$ (La IA sugiere métodos obsoletos o con vulnerabilidades de seguridad, demandando depuración manual).
+
+2. **Cálculo del Esfuerzo Esperado con PERT:**
+   $$E_{ia} = \frac{5 + 4(11) + 22}{6} = \frac{5 + 44 + 22}{6} = \frac{71}{6} \approx 11.83 \text{ horas}$$
+
+---
+
+### Comparativa de Resultados
+
+| Métrica | Desarrollo Tradicional | Desarrollo con IA | Diferencia |
+| :--- | :---: | :---: | :---: |
+| **Escenario Optimista ($O$)** | $10 \text{ hs}$ | $5 \text{ hs}$ | $-50\%$ |
+| **Escenario Más Probable ($M$)** | $16 \text{ hs}$ | $11 \text{ hs}$ | $-31.25\%$ |
+| **Escenario Pesimista ($P$)** | $30 \text{ hs}$ | $22 \text{ hs}$ | $-26.67\%$ |
+| **Esfuerzo Esperado PERT ($E$)** | **$17.33 \text{ hs}$** | **$11.83 \text{ hs}$** | **$-31.73\%$** |
+
+**Conclusión del ejemplo:** El uso de asistentes de IA permite una reducción estimada del **$31.73\%$** del esfuerzo total esperado en este módulo particular.
+
+---
+
+## Trabajo Práctico: Estimación de un Módulo de Software
 
 ### Consigna
-Su objetivo como líder de proyecto es estimar el esfuerzo en horas para desarrollar un **Módulo de Autenticación de Usuarios (Login y Registro en Base de Datos)** para una aplicación web. Deberá realizar una comparativa entre un desarrollo tradicional y un desarrollo asistido por IA.
+Asuma el rol de líder de proyecto y realice la estimación del esfuerzo en horas para el desarrollo de un **Módulo de Reportes y Exportación de Datos (en formatos PDF y Excel con filtros personalizados)**.
+
+Deberá plantear los dos escenarios posibles (sin IA y con IA) y presentar los resultados fundamentados.
 
 ---
 
-### Paso a Paso para Resolver la Actividad:
+### Guía de Pasos para Completar la Actividad:
 
-#### Paso 1: Definir los escenarios sin asistencia de IA (Desarrollo Tradicional)
-Imagina que el equipo programa de forma convencional (buscando documentación en Google y escribiendo todo desde cero). Define tus tres valores en horas:
-* **$O_{trad}$ (Optimista):** ¿Cuántas horas en el mejor de los casos? *(Ej: 10 horas)*
-* **$M_{trad}$ (Más Probable):** ¿Cuántas horas habitualmente? *(Ej: 16 horas)*
-* **$P_{trad}$ (Pesimista):** ¿Cuántas horas si surgen problemas de conexión a la BD? *(Ej: 30 horas)*
-
-#### Paso 2: Calcular el Esfuerzo Tradicional con PERT
-Aplica la fórmula:
-$$E_{trad} = \frac{O_{trad} + (4 \times M_{trad}) + P_{trad}}{6}$$
-*(Ejemplo con los valores anteriores: $\frac{10 + (4 \times 16) + 30}{6} = \frac{10 + 64 + 30}{6} = \frac{104}{6} \approx 17.3 \text{ horas}$)*
-
-#### Paso 3: Definir los escenarios utilizando Asistentes de IA (GitHub Copilot / ChatGPT)
-Ahora, plantea cómo cambian los tiempos si el programador utiliza IA para autocompletar funciones y generar estructuras base:
-* **$O_{ia}$ (Optimista):** La codificación inicial es mucho más rápida. *(Ej: 6 horas)*
-* **$M_{ia}$ (Más Probable):** El tiempo realista considerando que ahorras tiempo en escribir código, pero inviertes más tiempo revisando lo que sugirió la IA. *(Ej: 12 horas)*
-* **$P_{ia}$ (Pesimista):** Si la IA alucina código obsoleto y tardas en depurarlo. *(Ej: 22 horas)*
-
-#### Paso 4: Calcular el Esfuerzo con IA con PERT
-Aplica nuevamente la fórmula con los nuevos valores:
-$$E_{ia} = \frac{O_{ia} + (4 \times M_{ia}) + P_{ia}}{6}$$
-
-#### Paso 5: Conclusión y Análisis Crítico (Entregable)
-Redacta un breve informe (de 10 a 15 renglones) respondiendo:
-1. ¿Cuál fue la diferencia numérica en horas entre ambos métodos según el cálculo PERT?
-2. ¿En qué etapa específica del desarrollo sentiste o estimas que la IA aportó mayor velocidad?
-3. ¿Hubo alguna etapa donde utilizar IA pudo haber hecho el proceso más lento o demandado mayor atención? ¿Por qué?
+1. **Definir los valores para el desarrollo tradicional (Sin IA):**
+   Determine y justifique los valores en horas para $O_{trad}$, $M_{trad}$ y $P_{trad}$.
+2. **Calcular el Esfuerzo Tradicional ($E_{trad}$):**
+   Aplique la fórmula de PERT utilizando sus valores definidos.
+3. **Definir los valores para el desarrollo asistido por IA:**
+   Establezca los valores en horas para $O_{ia}$, $M_{ia}$ y $P_{ia}$, considerando el ahorro de tiempo en codificación y el tiempo dedicado a la revisión de código.
+4. **Calcular el Esfuerzo con IA ($E_{ia}$):**
+   Aplique nuevamente la fórmula de PERT.
+5. **Redactar un Informe Final:**
+   Elabore una breve conclusión argumentando:
+   * ¿Cuál es el porcentaje de reducción (o incremento) de esfuerzo obtenido?
+   * ¿En qué tareas específicas considera que la IA aportó mayor eficiencia y en cuáles requirió mayor supervisión humana?
