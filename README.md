@@ -4,7 +4,7 @@ Bienvenido al repositorio oficial de la asignatura **Formulación y Evaluación 
 
 ---
 
-##��� Contenido de la Materia
+## Contenido de la Materia
 
 El repositorio está organizado en carpetas temáticas que abarcan desde los enfoques tradicionales y predictivos hasta marcos de trabajo ágiles y técnicas avanzadas de estimación asistidas por Inteligencia Artificial:
 
