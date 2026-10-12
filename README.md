@@ -37,10 +37,3 @@ El repositorio está organizado en carpetas temáticas que abarcan desde los enf
 2. Dominar marcos de trabajo predictivos y adaptativos (ágiles) para la formulación, planificación y seguimiento de proyectos.
 3. Aplicar técnicas cuantitativas y empíricas de estimación de costos, tiempos y esfuerzos de desarrollo.
 4. Evaluar la incorporación de herramientas de IA en los procesos de análisis, estimación y revisión de código.
-
----
-
-## Información del Docente
-
-* **Asignatura:** Formulación y Evaluación de Proyectos de Software
-* **Uso del repositorio:** Consulta las carpetas temáticas para acceder a la bibliografía, actividades prácticas y plantillas de cada unidad.
